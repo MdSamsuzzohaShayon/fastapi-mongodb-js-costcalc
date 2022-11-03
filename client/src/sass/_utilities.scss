@@ -1,0 +1,411 @@
+// Utilities start
+.bg-dark-1 {
+    background: $dark-color-1;
+  }
+  .bg-dark-2 {
+    background: $dark-color-2;
+  }
+  .bg-dark-3 {
+    background: $dark-color-3;
+  }
+  .bg-dark-4 {
+    background: $dark-color-4;
+  }
+  
+  .container {
+    width: 60%;
+    margin-left: 20%;
+  }
+  
+  // Margin start
+  .m-0 {
+    margin: $margin-0;
+  }
+  .m-1 {
+    margin: $margin-1;
+  }
+  .mt-1 {
+    margin-top: $margin-1;
+  }
+  .mb-1 {
+    margin-bottom: $margin-1;
+  }
+  .my-1 {
+    margin-top: $margin-1;
+    margin-bottom: $margin-1;
+  }
+  .mx-1 {
+    margin-left: $margin-1;
+    margin-right: $margin-1;
+  }
+  
+  .m-2 {
+    margin: $margin-2;
+  }
+  .mt-2 {
+    margin-top: $margin-2;
+  }
+  .mb-2 {
+    margin-bottom: $margin-2;
+  }
+  .my-2 {
+    margin-top: $margin-2;
+    margin-bottom: $margin-2;
+  }
+  .mx-2 {
+    margin-left: $margin-2;
+    margin-right: $margin-2;
+  }
+  
+  .m-3 {
+    margin: $margin-3;
+  }
+  .mt-3 {
+    margin-top: $margin-3;
+  }
+  .mb-3 {
+    margin-bottom: $margin-3;
+  }
+  .my-3 {
+    margin-top: $margin-3;
+    margin-bottom: $margin-3;
+  }
+  .mx-3 {
+    margin-left: $margin-3;
+    margin-right: $margin-3;
+  }
+  
+  .m-4 {
+    margin: $margin-4;
+  }
+  .mt-4 {
+    margin-top: $margin-4;
+  }
+  .mb-4 {
+    margin-bottom: $margin-4;
+  }
+  .my-4 {
+    margin-top: $margin-4;
+    margin-bottom: $margin-4;
+  }
+  .mx-4 {
+    margin-left: $margin-4;
+    margin-right: $margin-4;
+  }
+  // Margin end
+  
+  // Padding start
+  .p-0 {
+    padding: $padding-0;
+  }
+  .p-1 {
+    padding: $padding-1;
+  }
+  .pt-1 {
+    padding-top: $padding-1;
+  }
+  .pb-1 {
+    padding-bottom: $padding-1;
+  }
+  .py-1 {
+    padding-top: $padding-1;
+    padding-bottom: $padding-1;
+  }
+  .px-1 {
+    padding-left: $padding-1;
+    padding-right: $padding-1;
+  }
+  
+  .p-2 {
+    padding: $padding-2;
+  }
+  .pt-2 {
+    padding-top: $padding-2;
+  }
+  .pb-2 {
+    padding-bottom: $padding-2;
+  }
+  .py-2 {
+    padding-top: $padding-2;
+    padding-bottom: $padding-2;
+  }
+  .px-2 {
+    padding-left: $padding-2;
+    padding-right: $padding-2;
+  }
+  
+  .p-3 {
+    padding: $padding-3;
+  }
+  .pt-3 {
+    padding-top: $padding-3;
+  }
+  .pb-3 {
+    padding-bottom: $padding-3;
+  }
+  .py-3 {
+    padding-top: $padding-3;
+    padding-bottom: $padding-3;
+  }
+  .px-3 {
+    padding-left: $padding-3;
+    padding-right: $padding-3;
+  }
+  
+  .p-4 {
+    padding: $padding-4;
+  }
+  .pt-4 {
+    padding-top: $padding-4;
+  }
+  .pb-4 {
+    padding-bottom: $padding-4;
+  }
+  .py-4 {
+    padding-top: $padding-4;
+    padding-bottom: $padding-4;
+  }
+  .px-4 {
+    padding-left: $padding-4;
+    padding-right: $padding-4;
+  }
+  // Padding end
+  
+  .d-none {
+    display: none !important;
+  }
+  .d-inline {
+    display: inline;
+  }
+  .d-inline-block {
+    display: inline-block;
+  }
+  .d-block {
+    display: block;
+  }
+  .d-flex {
+    display: flex;
+  }
+  .justify-content-center {
+    justify-content: center;
+  }
+  .justify-content-start {
+    justify-content: start;
+  }
+  .justify-content-end {
+    justify-content: end;
+  }
+  .justify-content-between {
+    justify-content: space-between;
+  }
+  .justify-content-around {
+    justify-content: space-around;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .align-items-start {
+    align-items: start;
+  }
+  .align-items-end {
+    align-items: end;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-no-wrap {
+    flex-wrap: nowrap;
+  }
+  .flex-column {
+    flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
+  }
+  
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  .text-capitalize {
+    text-transform: capitalize;
+  }
+  .text-lowercase {
+    text-transform: lowercase;
+  }
+  .text-primary-1 {
+    color: $primary-color-1;
+  }
+  .text-primary-2 {
+    color: $primary-color-2;
+  }
+  .text-info-1 {
+    color: $info-color-1;
+  }
+  .text-info-2 {
+    color: $info-color-2;
+  }
+  .text-light-1 {
+    color: $light-color-1;
+  }
+  .text-light-2 {
+    color: $light-color-2;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  .w-fit {
+    width: fit-content;
+  }
+  .h-full {
+    height: 100%;
+  }
+  .h-fit {
+    height: fit-content;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 1.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .btn-primary {
+    background: $primary-color-1;
+    color: $light-color-2;
+    border: $border-hard-line solid $primary-color-1;
+    z-index: 1;
+  }
+  
+  .btn-outline-primary {
+    background-color: transparent;
+    color: $primary-color-1;
+    border: $border-hard-line solid $primary-color-1;
+    &:hover {
+      // border: none;
+      color: $light-color-1;
+      background-color: $primary-color-1;
+    }
+  }
+  .btn-outline-info {
+    background-color: transparent;
+    color: $info-color-1;
+    border: $border-hard-line solid $info-color-1;
+    &:hover {
+      // border: none;
+      color: $light-color-1;
+      background-color: $info-color-1;
+    }
+  }
+  .list-group {
+    width: 100%;
+    .list-group-item {
+      list-style: none;
+      display: flex;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+  }
+  .list-unstyled{
+    list-style: none;
+  }
+  
+  .row {
+    width: 100%;
+    display: flex;
+  }
+  .col,
+  .col-1 {
+    width: $single-column-width * 1;
+  }
+  .col-2 {
+    width: $single-column-width * 2;
+  }
+  .col-3 {
+    width: $single-column-width * 3;
+  }
+  .col-4 {
+    width: $single-column-width * 4;
+  }
+  .col-5 {
+    width: $single-column-width * 5;
+  }
+  .col-6 {
+    width: $single-column-width * 6;
+  }
+  .col-7 {
+    width: $single-column-width * 7;
+  }
+  .col-8 {
+    width: $single-column-width * 8;
+  }
+  .col-9 {
+    width: $single-column-width * 9;
+  }
+  .col-10 {
+    width: $single-column-width * 10;
+  }
+  .col-11 {
+    width: $single-column-width * 11;
+  }
+  .col-12 {
+    width: $single-column-width * 12;
+  }
+  
+  .border {
+    border: $border-soft-line solid $light-color-3;
+  }
+  .border-top {
+    border-top: $border-soft-line solid $light-color-3;
+  }
+  .border-bottom {
+    border-bottom: $border-soft-line solid $light-color-3;
+  }
+  .border-left {
+    border-left: $border-soft-line solid $light-color-3;
+  }
+  .border-right {
+    border-right: $border-soft-line solid $light-color-3;
+  }
+  
+  .position-absolute {
+    position: absolute;
+  }
+  
+  .position-relative {
+    position: relative;
+  }
+  
+  .position-static {
+    position: static;
+  }
+  
+  .position-sticky {
+    position: sticky;
+  }
+  
+  .form-control {
+    background: transparent;
+    border: none;
+    border-bottom: $border-hard-line solid $light-color-1;
+    min-width: 8rem;
+    outline: none;
+    // &:hover{
+    //   border-bottom: $border-soft-line solid $light-color-2;
+    // }
+    &:focus {
+      border-bottom: $border-soft-line solid $light-color-2;
+    }
+  }
+  // Utilities end
+  

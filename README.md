@@ -1,8 +1,11 @@
 ### Website cost calculator
 
+### Reference
+ - [Website](https://www.websitecostcalculator.app/)
+ 
 ### Instructions
  - ask client for backend - Which backend framework should I use (your existing backend framework)? Should I use any frontend framework or vanilla JavaScript? How will you combine this with your existing project?
- - 
+ - Make backend prototype for client
 
 ### Copy targeted website
 

@@ -1,3 +1,72 @@
-h1{
-    color: blue;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+@import './variables';
+
+@import "./reboot";
+
+@import "./utilities";
+
+
+// Main design start
+.section-1 {
+  .content {
+    min-height: 700px;
+  }
+
+  .title-sub-text {
+    font-size: 1rem;
+  }
+  .description {
+    width: 70%;
+    // margin-left: 15%;
+    font-size: 1.4rem;
+    // font-weight: 500;
+  }
 }
+
+.section-2 {
+  .content {
+    min-height: 34rem;
+    padding: 6rem 0;
+    .main-title {
+      width: 80%;
+    }
+  }
+  .feature-list {
+    ul {
+      list-style: none;
+      li::marker {
+        color: $light-color-1;
+        content: '•  ';
+        // margin-left: ;
+      }
+    }
+  }
+}
+.section-4 {
+  .double-label {
+    min-width: 6rem;
+  }
+}
+// For all section content
+.content {
+  .section-title-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+  }
+}
+.calculation-result {
+  .cost-box {
+    padding: 1rem 3rem;
+    background: $dark-color-3;
+  }
+}
+.section-11 {
+  // bottom: ;
+  left: 25%;
+}
+// Main design end
+
+// Slider style start
+@import './slider.scss';
+// Slider style end
