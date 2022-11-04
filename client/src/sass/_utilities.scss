@@ -378,6 +378,23 @@
   .border-right {
     border-right: $border-soft-line solid $light-color-3;
   }
+  .border-0{
+    border: none;
+    border-radius: 0;
+  }
+  .border-1{
+    border-radius: 5px;
+  }
+  .border-2{
+    border-radius: 10px;
+  }
+  .border-3{
+    border-radius: 15px;
+  }
+  .border-4{
+    border-radius: 20px;
+  }
+
   
   .position-absolute {
     position: absolute;
@@ -397,6 +414,7 @@
   
   .form-control {
     background: transparent;
+    color: $light-color-1;
     border: none;
     border-bottom: $border-hard-line solid $light-color-1;
     min-width: 8rem;

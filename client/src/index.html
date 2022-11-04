@@ -10,7 +10,7 @@
     <main class="wrapper">
       <!-- Get estimate start  -->
       <section class="section-1" id="section-get-estimate">
-        <div class="container mt-4 bg-dark-2">
+        <div class="container mt-4 bg-dark-2 border-2">
           <div
             class="p-3 content d-flex justify-content-center align-items-center flex-column"
           >
@@ -95,7 +95,7 @@
 
       <!-- Wesite design start  -->
       <section class="section-3" id="section-web-design">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row section-title-wrapper">
               <h2 class="h2 title-secondary">Website Design</h2>
@@ -160,7 +160,7 @@
 
       <!-- Website content start  -->
       <section class="section-4 mt-3" id="section-web-content">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row section-title-wrapper">
               <h2 class="h2 title-secondary">Website Content</h2>
@@ -168,8 +168,8 @@
             <div class="row">
               <div class="col-6 border-right">
                 <div class="input-quantity">
-                  <div class="row mb-2">
-                    <label for="stockimages" class="double-label"
+                  <div class="row mb-2" id="stockimage-input-wrapper">
+                    <!-- <label for="stockimages" class="double-label"
                       >Stock images :</label
                     >
                     <input
@@ -180,17 +180,9 @@
                     />
                     <label for="stockimages" class="double-label"
                       >at $10/image (avg.)</label
-                    >
+                    > -->
                   </div>
-                  <div class="row mb-2">
-                    <label for="coppywriting">Copywr‍‍‍iting :</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="coppywriting"
-                      id="coppywriting"
-                    />
-                    <label for="coppywriting">at $1‍‍‍50‍‍‍/page (avg.)</label>
+                  <div class="row mb-2" id="coppywriting-input-wrapper">
                   </div>
                 </div>
               </div>
@@ -218,7 +210,7 @@
 
       <!-- ecommerce start  -->
       <section class="section-5 mt-3" id="section-web-content">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row section-title-wrapper">
               <h2 class="h2 title-secondary">Ecommerce</h2>
@@ -251,173 +243,54 @@
 
       <!-- web addons plugin start  -->
       <section class="section-6 mt-3" id="section-web-addons-plugins">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row mb-2 section-title-wrapper">
               <h2 class="h2 title-secondary">Website add-ons</h2>
             </div>
             <div class="row mb-2">
               <div class="col-6">
-                <div class="checkbox-inputs">
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="forms-lead">Forms / Lead gene‍‍‍ration</label>
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="img-video">Image / Video ga‍‍‍lleries</label>
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- Reference - https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="event-reservation"
-                      >‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍Event scheduling /
-                      ‍‍‍Reservations</label
-                    >
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="img-video"
-                      >Social Media (share / lik‍‍‍e / reviews)</label
-                    >
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="img-video">Onsite sea‍‍‍rch</label>
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
+                <div class="radio-checkbox-inputs radio-input-left">
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="leadgen-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="galary-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="schedule-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="social-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="search-wraper"
+                  ></div>
                 </div>
               </div>
               <div class="col-6">
-                <div class="checkbox-inputs">
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="member-login"
-                      >‍‍‍Member login /‍‍‍ Profiles</label
-                    >
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="analysis-tracking"
-                      >Analy‍‍‍tics & tracking</label
-                    >
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- Reference - https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="live-chat"
-                      >‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍Liv‍‍‍e chat</label
-                    >
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
-                  <div class="radio-btn-input">
-                    <!-- https://codepen.io/sfearl1/pen/AVYpjO -->
-                    <label for="blog">Blog‍‍‍</label>
-                    <div class="toggle-btn">
-                      <input
-                        type="radio"
-                        name="radio"
-                        id="radio1"
-                        checked="checked"
-                      />
-                      <label for="radio1">on</label>
-
-                      <input type="radio" name="radio" id="radio2" />
-                      <label for="radio2">off</label>
-                    </div>
-                  </div>
+                <div class="radio-checkbox-inputs radio-input-right">
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="profile-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="tracking-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="chat-wraper"
+                  ></div>
+                  <div
+                    class="row justify-content-between w-full align-items-center"
+                    id="blog-wraper"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -436,7 +309,7 @@
 
       <!-- Website control start  -->
       <section class="section-7 mt-3" id="section-web-control">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row mb-3 section-title-wrapper">
               <h2 class="h2 title-secondary">Websi‍‍‍te control</h2>
@@ -446,8 +319,10 @@
                 <h3 class="h3">Comfort level writing code?</h3>
               </div>
               <div class="col-8 mb-3">
-                <div class="slider-wrapper w-full" id="website-control-writing-code-slider">
-                </div>
+                <div
+                  class="slider-wrapper w-full"
+                  id="website-control-writing-code-slider"
+                ></div>
               </div>
             </div>
             <div class="row mb-3">
@@ -455,8 +330,10 @@
                 <h3 class="h3">Desired editing flexibility?</h3>
               </div>
               <div class="col-8">
-                <div class="slider-wrapper w-full" id="website-control-flexibility-slider">
-                </div>
+                <div
+                  class="slider-wrapper w-full"
+                  id="website-control-flexibility-slider"
+                ></div>
               </div>
             </div>
           </div>
@@ -466,7 +343,7 @@
 
       <!-- Website cost estimation and options start  -->
       <section class="section-8 mt-3" id="section-web-cost-estimate-option">
-        <div class="container bg-dark-2">
+        <div class="container bg-dark-2 border-2">
           <div class="p-3 content">
             <div class="row section-title-wrapper">
               <h2 class="h2 title-secondary">Websi‍‍‍te control</h2>
@@ -542,7 +419,7 @@
       <section class="section-9" id="section-web-cost-estimate-option">
         <!-- Option-1: agency using wordpress start  -->
         <div class="option-1 option mt-3">
-          <div class="container bg-dark-2">
+          <div class="container bg-dark-2 border-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
                 <h2 class="h2 title-secondary">
@@ -674,7 +551,7 @@
 
         <!-- Option-2: agency using website builder start  -->
         <div class="option-2 option mt-3">
-          <div class="container bg-dark-2">
+          <div class="container bg-dark-2 border-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
                 <h2 class="h2 title-secondary">
@@ -806,7 +683,7 @@
 
         <!-- Option-3: DIY using WordPress start  -->
         <div class="option-3 option mt-3">
-          <div class="container bg-dark-2">
+          <div class="container bg-dark-2 border-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
                 <h2 class="h2 title-secondary">
@@ -939,7 +816,7 @@
 
         <!-- Option-4: DIY u‍‍‍sing Website Builder start  -->
         <div class="option-4 option mt-3">
-          <div class="container bg-dark-2">
+          <div class="container bg-dark-2 border-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
                 <h2 class="h2 title-secondary">
@@ -1094,7 +971,7 @@
               </p>
             </div>
             <div class="col-4 text-right">
-              <button class="btn btn-primary">Save</button>
+              <button class="btn btn-primary" id="save-data">Save</button>
             </div>
           </div>
         </div>

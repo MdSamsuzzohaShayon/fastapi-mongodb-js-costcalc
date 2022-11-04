@@ -6,6 +6,7 @@
 ### Instructions
  - ask client for backend - Which backend framework should I use (your existing backend framework)? Should I use any frontend framework or vanilla JavaScript? How will you combine this with your existing project?
  - Make backend prototype for client
+ - style save button and make the button sticky and intractive
 
 ### Copy targeted website
 

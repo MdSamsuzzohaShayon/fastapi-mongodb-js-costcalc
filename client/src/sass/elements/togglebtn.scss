@@ -1,0 +1,83 @@
+$toggle-slider-btn-size: 30px;
+
+/** BEGIN CSS NEEDED FOR SWITCH **/
+.radio-input-left{
+    padding-right: 3rem;
+}
+.radio-input-right{
+    padding-left: 3rem;
+}
+.on-off-toggle {
+    width: 56px;
+    height: 24px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .on-off-toggle-slider {
+    width: 72px;
+    height: 37px;
+    display: block;
+    border-radius: 34px;
+    background-color: $dark-color-3;
+    transition: background-color 0.4s;
+    
+    // Button
+    &:before {
+      content: '';
+      display: block;
+      background-color: #fff;
+      box-shadow: 0 0 0 1px #949494;
+      bottom: -9px;
+      height: $toggle-slider-btn-size;
+      left: 5px;
+      position: absolute;
+      transition: .4s;
+      width: $toggle-slider-btn-size;
+      z-index: 5;
+      border-radius: 100%;
+    }
+    
+    // Text
+    &:after {
+      display: block;
+      line-height: 35px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: bold;
+      content: 'off';
+      color: $light-color-1;
+      padding-left: 38px;
+      transition: all 0.4s;
+    }
+    
+  }
+  
+  .on-off-toggle-input {
+    /*
+      This way of hiding the default input is better 
+      for accessibility than using display: none;
+    */
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .on-off-toggle-input:checked + 
+  .on-off-toggle-slider {
+    background-color: $info-color-1;
+    
+    &:before {
+      transform: translateX(32px);
+    }
+    &:after {
+      content: 'on';
+      color: $light-color-1;
+      padding-left: 8px;
+    }
+  }
+  
+  /*** END CSS NEEDED FOR SWITCH **/
+  
+  
+  
+  /*** DEMO STYLES ONLY ***/
