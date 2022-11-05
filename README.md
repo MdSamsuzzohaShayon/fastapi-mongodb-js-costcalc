@@ -11,7 +11,7 @@
 ### FastAPI
  - [Reference](https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/)
  - [Handler objectId](https://api.mongodb.com/python/3.2/api/bson/json_util.html), [JSON object must be str, bytes or bytearray, not dict](https://stackoverflow.com/questions/42354001/json-object-must-be-str-bytes-or-bytearray-not-dict), [Value error on running find_one query](https://www.mongodb.com/community/forums/t/value-error-on-running-find-one-query/8482)
- - 
+ - [Get client's real IP address](https://stackoverflow.com/questions/60098005/fastapi-starlette-get-client-real-ip)
 
 ### Copy targeted website
 

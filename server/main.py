@@ -1,15 +1,33 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Request, Header
 from fastapi.responses import JSONResponse
 from bson import ObjectId, json_util
 import json
 from typing import List
-
+import re
 from dotenv import load_dotenv
 from models.CostItem import CostItemCreateModel, ResponseSingleCostitem, CostItemUpdateModel
 from config.database import costitem_collection
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 app = FastAPI()
+
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 @app.get('/api/test')
@@ -19,11 +37,13 @@ def test_api():
 
 # Get all cost item list
 @app.post('/api/costitem/add', response_model=ResponseSingleCostitem)
-async def costitem_add(costitem: CostItemCreateModel):
+async def costitem_add(costitem: CostItemCreateModel, request: Request):
     try:
         costitem_dict = costitem.dict()
+        x = 'x-forwarded-for'.encode('utf-8')
+        costitem_dict['userip'] = request.client.host
         new_costitem = await costitem_collection.insert_one(costitem_dict)
-        print(costitem)
+        print(costitem_dict)
         # print(new_costitem.inserted_id)
         objectId = new_costitem.inserted_id
         costitem_dict['id'] = str(objectId)
