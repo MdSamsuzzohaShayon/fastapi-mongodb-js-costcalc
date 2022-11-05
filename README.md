@@ -8,6 +8,11 @@
  - Make backend prototype for client
  - style save button and make the button sticky and intractive
 
+### FastAPI
+ - [Reference](https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/)
+ - [Handler objectId](https://api.mongodb.com/python/3.2/api/bson/json_util.html), [JSON object must be str, bytes or bytearray, not dict](https://stackoverflow.com/questions/42354001/json-object-must-be-str-bytes-or-bytearray-not-dict), [Value error on running find_one query](https://www.mongodb.com/community/forums/t/value-error-on-running-find-one-query/8482)
+ - 
+
 ### Copy targeted website
 
 - Wget - `wget -k -K -E -r -l 10 -p -N -F --restrict-file-names=windows -nH https://www.websitecostcalculator.app`
