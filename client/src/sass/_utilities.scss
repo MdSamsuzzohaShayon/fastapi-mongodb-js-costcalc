@@ -11,6 +11,9 @@
   .bg-dark-4 {
     background: $dark-color-4;
   }
+  .bg-danger-2 {
+    background: $danger-color-2;
+  }
   
   .container {
     width: 60%;
@@ -250,6 +253,9 @@
   .text-light-2 {
     color: $light-color-2;
   }
+  .text-danger-1 {
+    color: $danger-color-1;
+  }
   .text-center {
     text-align: center;
   }
@@ -259,6 +265,7 @@
   .text-right {
     text-align: right;
   }
+  
   
   .w-full {
     width: 100%;
@@ -283,8 +290,15 @@
   }
   .btn-primary {
     background: $primary-color-1;
-    color: $light-color-2;
+    color: $light-color-1;
     border: $border-hard-line solid $primary-color-1;
+    z-index: 1;
+  }
+
+  .btn-danger {
+    background: $danger-color-1;
+    color: $light-color-1;
+    border: $border-hard-line solid $danger-color-1;
     z-index: 1;
   }
   

@@ -7,7 +7,36 @@
     <title>Website Cost Calculator</title>
   </head>
   <body class="bg-dark-1 home">
-    <main class="wrapper">
+    <!-- Main element start -->
+    <div class="wrapper no-loading d-none">
+      <!-- Menu start  -->
+      <div class="position-sticky menu container bg-dark-4">
+        <div
+          class="w-full d-flex justify-content-between py-2 align-items-center"
+        >
+          <nav class="px-2">
+            <ul class="d-flex">
+              <li class="list-unstyled">
+                <a href="dashboard.html" class="text-light-2">Dashboard</a>
+              </li>
+            </ul>
+          </nav>
+          <nav class="px-2">
+            <ul class="d-flex">
+              <li class="list-unstyled">
+                <button class="btn btn-primary mx-2" id="save-data">
+                  Save
+                </button>
+              </li>
+              <li class="list-unstyled">
+                <button class="btn btn-primary" id="reset-data">Reset</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- Menu end  -->
+
       <!-- Get estimate start  -->
       <section class="section-1" id="section-get-estimate">
         <div class="container mt-4 bg-dark-2 border-2">
@@ -182,8 +211,7 @@
                       >at $10/image (avg.)</label
                     > -->
                   </div>
-                  <div class="row mb-2" id="coppywriting-input-wrapper">
-                  </div>
+                  <div class="row mb-2" id="coppywriting-input-wrapper"></div>
                 </div>
               </div>
               <div class="col-6">
@@ -959,27 +987,26 @@
         </div>
       </section>
       <!-- Ads placement end -->
+    </div>
+    <!-- Main element end -->
 
-      <!-- save data start  -->
-      <section class="section-11 position-absolute" id="section-web-data-dave">
-        <div class="container bg-dark-4 px-4">
-          <div class="row py-2">
-            <div class="col-8">
-              <img src="./img/icon-close.svg" width="25" alt="" />
-              <p>
-                Would you like to save the data otherwise your data will be lost
-              </p>
-            </div>
-            <div class="col-4 text-right">
-              <button class="btn btn-primary" id="save-data">Save</button>
-            </div>
-          </div>
+    <div class="loading position-absolute w-full">
+      <div class="d-flex w-full justify-content-center align-items-center">
+        <div class="loading-elements">
+          <h2>Loading</h2>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </section>
-      <!-- save data end  -->
-    </main>
+      </div>
+    </div>
+
     <!-- Footer section start  -->
-    <footer class="footer border-top">
+    <footer class="footer border-top no-loading d-none">
       <div class="container">
         <p class="text-muted">© Copyrights 2022</p>
         <p class="text-muted">WEBSITE COST CALCULATOR APP</p>

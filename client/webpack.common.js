@@ -1,13 +1,21 @@
 // MULTIPLE PAGE
-// const htmlPageNames = ['dashboard', 'tos', 'payment', 'invoice', 'contact']; // Use same array in other webpack file
+const htmlPageNames = ['dashboard']; // Use same array in other webpack file
 
 const entryObject = {};
 entryObject.index = ['./src/js/index.js', './src/sass/index.scss'];
 
 // No more pages
-// htmlPageNames.forEach((name) => {
-//   entryObject[name] = [`./src/js/${name}.js`, `./src/scss/${name}.scss`];
-// });
+htmlPageNames.forEach((name) => {
+  entryObject[name] = [`./src/js/${name}.js`, `./src/sass/${name}.scss`];
+});
+
+// index: [ './src/js/index.js', './src/sass/index.scss' ],
+// dashboard: [ './src/js/dashboard.js', './src/scss/dashboard.scss' ]
+
+
+// client/src/sass/dashboard.scss
+
+// console.log(entryObject);
 
 module.exports = {
   entry: entryObject,
@@ -21,7 +29,6 @@ module.exports = {
           sources: {
             list: [
               // All default supported tags and attributes
-              '...',
               {
                 tag: 'img',
                 attribute: 'data-src',
@@ -65,5 +72,4 @@ module.exports = {
       // },
     ],
   },
-
 };

@@ -6,8 +6,7 @@ const common = require('./webpack.common');
 // https://www.youtube.com/watch?v=2L8HceLRGf4
 
 // MULTIPLE PAGE
-// const htmlPageNames = ['dashboard', 'tos', 'payment', 'invoice', 'contact'];
-const htmlPageNames = [];
+const htmlPageNames = ['dashboard'];
 const multipleHtmlPlugins = htmlPageNames.map(
   (name) =>
     new HtmlWebpackPlugin({

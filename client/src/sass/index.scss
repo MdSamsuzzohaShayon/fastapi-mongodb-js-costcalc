@@ -7,6 +7,14 @@
 @import "./utilities";
 
 
+.menu{
+  top: 10px;
+  z-index: 4;
+  a{
+    text-decoration: none;
+  }
+}
+
 // Main design start
 .section-1 {
   .content {
@@ -80,4 +88,6 @@
 @import './elements/slider.scss';
 // Slider style end
 
-@import './elements/togglebtn.scss'
+@import './elements/togglebtn.scss';
+
+@import './elements/loader.scss';

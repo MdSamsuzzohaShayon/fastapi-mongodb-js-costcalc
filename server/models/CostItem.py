@@ -22,7 +22,8 @@ class CostItemModelBase(BaseModel):
 
 
 class CostItemCreateModel(CostItemModelBase):
-    userip : str
+    # userip : str
+    pass
     
 class CostItemUpdateModel(CostItemModelBase):
     pass

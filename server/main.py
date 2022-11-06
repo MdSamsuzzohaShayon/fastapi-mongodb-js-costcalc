@@ -36,7 +36,7 @@ def test_api():
 
 
 # Get all cost item list
-@app.post('/api/costitem/add', response_model=ResponseSingleCostitem)
+@app.post('/api/costitem/add', response_model=ResponseSingleCostitem, response_model_exclude_none=True)
 async def costitem_add(costitem: CostItemCreateModel, request: Request):
     try:
         costitem_dict = costitem.dict()
@@ -108,7 +108,7 @@ async def costitem_of_a_user(userip: str):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@app.put('/api/costitem/update/{costitemId}', response_model=ResponseSingleCostitem)
+@app.put('/api/costitem/update/{costitemId}', response_model=ResponseSingleCostitem, response_model_exclude_none=True)
 async def costitem_update(costitemId: str, update_costitem: CostItemUpdateModel):
     try:
         # costitem = {k: v for k, v in update_costitem.dict().items() if v is not None}

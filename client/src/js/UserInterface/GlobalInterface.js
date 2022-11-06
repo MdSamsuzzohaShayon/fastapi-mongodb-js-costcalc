@@ -138,6 +138,119 @@ class GlobalInterface {
     }
     return null;
   }
+
+  makeATableOfCostitemList(costitemList) {
+    let tableRows = '';
+    //     "search": false,
+    //     "id": "6366a37061df5f491e573d90"
+    // }
+    // Calculate money with all there value
+    const yesNoToggle = (ynt) => (ynt ? 'Yes' : 'No');
+    const preventUndefined = (ci) => (ci === undefined ? '' : ci);
+    for (let i = 0; i < costitemList.length; i += 1) {
+      tableRows += `
+                  <tr>
+                    <td class="p-1 text-center border-right border-bottom">${
+                      i + 1
+                    }</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.design
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.noofpage
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.content
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.ecommerce
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.profit
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].schedule
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].blog
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.writingcontrol
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.flexibilitycontrol
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].chat
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].tracking
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].galary
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].leadgen
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].social
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${yesNoToggle(
+                      costitemList[i].search
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">
+                      <button class="btn btn-primary rounded-2 costitem-edit" data-costitemId="${costitemList[i].id}" >Edit</button>
+                    </td>
+                    <td class="p-1 text-center">
+                      <button class="btn btn-danger rounded-2 costitem-delete" data-costitemId="${costitemList[i].id}">Delete</button>
+                    </td>
+                  </tr>
+                  `;
+    }
+    try {
+      if (costitemList.length > 0) {
+        const tableString = `
+                            <table class="table w-full text-light-1 border">
+                              <thead>
+                                <tr>
+                                  <th class="py-2 border-bottom border-right">Serial</th>
+                                  <th class="py-2 border-bottom border-right">Design(%)</th>
+                                  <th class="py-2 border-bottom border-right">Number of page(%)</th>
+                                  <th class="py-2 border-bottom border-right">Content(%)</th>
+                                  <th class="py-2 border-bottom border-right">Ecommerce(%)</th>
+                                  <th class="py-2 border-bottom border-right">Profit(%)</th>
+                                  <th class="py-2 border-bottom border-right">Scheduling / ‍‍‍Reservations</th>
+                                  <th class="py-2 border-bottom border-right">Blog</th>
+                                  <th class="py-2 border-bottom border-right">Comfort level writing code?(%)</th>
+                                  <th class="py-2 border-bottom border-right">Desired editing flexibility?(%)</th>
+                                  <th class="py-2 border-bottom border-right">Live Chat</th>
+                                  <th class="py-2 border-bottom border-right">Analy‍‍‍tics & tracking</th>
+                                  <th class="py-2 border-bottom border-right">Image / Video ga‍‍‍lleries</th>
+                                  <th class="py-2 border-bottom border-right">Forms / Lead gene‍‍‍ration</th>
+                                  <th class="py-2 border-bottom border-right">Social Media (share / lik‍‍‍e / reviews)</th>
+                                  <th class="py-2 border-bottom border-right">Onsite sea‍‍‍rch</th>
+                                  <th class="py-2 border-bottom border-right">Edit</th>
+                                  <th class="py-2 border-bottom">Delete</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                ${tableRows}
+                              </tbody>
+                            </table>
+        `;
+
+        const tableElement = this.domParser.parseFromString(
+          tableString,
+          'text/html'
+        );
+        return tableElement.activeElement.childNodes[0];
+      }
+      return `<div class="p-3 text-danger-1 bg-danger-2">No item found</div>`;
+    } catch (tlblIErr) {
+      console.log(tlblIErr);
+    }
+    return null;
+  }
 }
 
 export default GlobalInterface;
