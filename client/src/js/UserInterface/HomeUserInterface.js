@@ -25,26 +25,29 @@ class HomeUserInterface extends GlobalInterface {
     }
   }
 
-  makeRadioOnOffToggle(radioInputWrapper, inputTitle, inputName) {
+  makeRadioOnOffToggle(radioInputWrapper, inputTitle, inputName, defaultValue) {
     // Set default value
     this.inputTitle = inputTitle;
     this.inputName = inputName;
     this.radioInputWrapper = radioInputWrapper;
+    this.defaultValue = defaultValue;
     const radioInputElement = this.makeOnOffToggleInput(
       this.inputTitle,
-      this.inputName
+      this.inputName,
+      this.defaultValue
     );
     this.radioInputWrapper.appendChild(radioInputElement);
   }
 
-  makeAndAppendTwoLevelInputField(inputWrapper, txtLbl1, txtLbl2, inputName) {
+  makeAndAppendTwoLevelInputField(inputWrapper, txtLbl1, txtLbl2, inputName, defaultValue) {
     this.inputWrapper = inputWrapper;
     const inputElement = this.makeTwoLevelInputField(
       txtLbl1,
       txtLbl2,
-      inputName
-      );
-      // console.log(inputElement);
+      inputName,
+      defaultValue
+    );
+    // console.log(inputElement);
     this.inputWrapper.appendChild(inputElement);
   }
 }

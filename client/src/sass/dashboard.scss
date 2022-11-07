@@ -6,9 +6,15 @@
 
 @import "./utilities";
 
-
-// Main design start
-.cost-calculated-table-wrapper{
-    overflow-x: auto;
+.dashboard{
+    a{
+        text-decoration: none;
+    }
+    // Main design start
+    .cost-calculated-table-wrapper{
+        overflow-x: auto;
+    }
+    // Main design end
 }
-// Main design end
+
+@import './elements/loader.scss';

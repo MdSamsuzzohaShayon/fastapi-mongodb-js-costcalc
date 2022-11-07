@@ -7,15 +7,16 @@ class FetchData {
     this.costitemId = params.get('costitemId');
   }
 
-  async fetchCostitemDataByIP() {
+  async fetchCostitemData() {
     this.costitemList = [];
     try {
+      const userid = window.localStorage.getItem('userid');
       const options = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       };
       const response = await fetch(
-        `${BACKEND_URL}/costitem/user/127.0.0.1`,
+        `${BACKEND_URL}/costitem/user/?userid=${userid}`,
         options
       );
       if (response.status === 200 || response.status === 201) {
@@ -37,7 +38,7 @@ class FetchData {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       };
-      
+
       const response = await fetch(
         `${BACKEND_URL}/costitem/single/${this.costitemId}`,
         options

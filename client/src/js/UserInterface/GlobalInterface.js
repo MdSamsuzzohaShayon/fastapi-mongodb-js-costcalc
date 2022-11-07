@@ -1,7 +1,10 @@
+import CostCalculation from '../Utils/CostCalculation';
+
 class GlobalInterface {
   constructor() {
     console.log('This is global interface class');
     this.domParser = new DOMParser();
+    this.costCalc = new CostCalculation();
   }
 
   //   make slider label
@@ -53,7 +56,7 @@ class GlobalInterface {
                               <input
                               class="slider-range-input w-full"
                               type="range"
-                              "${setname}"
+                              ${setname}
                               id="${sliderName}"
                               value="${defaultValue}"
                               min="0"
@@ -81,7 +84,7 @@ class GlobalInterface {
     return null;
   }
 
-  makeOnOffToggleInput(inputTitle, inputName) {
+  makeOnOffToggleInput(inputTitle, inputName, defaultValue) {
     try {
       const inputString = `
                           <div class="row mb-3 justify-content-between w-full align-items-center">
@@ -106,6 +109,11 @@ class GlobalInterface {
         inputString,
         'text/html'
       );
+      if (defaultValue === true) {
+        sliderElement.querySelector(
+          `input[name="${inputName}"]`
+        ).checked = true;
+      }
       return sliderElement.activeElement.childNodes[0];
     } catch (onOffToggleErr) {
       console.log(onOffToggleErr);
@@ -113,16 +121,21 @@ class GlobalInterface {
     return null;
   }
 
-  makeTwoLevelInputField(txtLbl1, txtLbl2, inputName) {
+  makeTwoLevelInputField(txtLbl1, txtLbl2, inputName, defaultValue) {
+    let newDefault = '';
+    if (defaultValue) {
+      newDefault = defaultValue;
+    }
     try {
       const inputString = `
                           <div>
                             <label for="${inputName}" class="double-label" >${txtLbl1}</label>
                             <input
                               type="text"
-                              class="form-control two-level-inputs"
+                              class="form-control two-level-inputs text-center"
                               name="${inputName}"
                               id="${inputName}"
+                              value="${newDefault}"
                             />
                             <label for="${inputName}" class="double-label" >${txtLbl2}</label >
                           </div>
@@ -156,13 +169,19 @@ class GlobalInterface {
                     <td class="p-1 text-center border-right border-bottom">${preventUndefined(
                       costitemList[i]?.design
                     )}</td>
-                    <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                    <td class="p-1 text-center border-right border-bottom">${this.costCalc.formatNumberOfPage(
                       costitemList[i]?.noofpage
                     )}</td>
                     <td class="p-1 text-center border-right border-bottom">${preventUndefined(
-                      costitemList[i]?.content
+                      costitemList[i]?.stockimage
                     )}</td>
                     <td class="p-1 text-center border-right border-bottom">${preventUndefined(
+                      costitemList[i]?.copywrite
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${this.costCalc.formatLogoDesign(
+                      costitemList[i]?.content
+                    )}</td>
+                    <td class="p-1 text-center border-right border-bottom">${this.costCalc.formatEcommerce(
                       costitemList[i]?.ecommerce
                     )}</td>
                     <td class="p-1 text-center border-right border-bottom">${preventUndefined(
@@ -199,10 +218,14 @@ class GlobalInterface {
                       costitemList[i].search
                     )}</td>
                     <td class="p-1 text-center border-right border-bottom">
-                      <button class="btn btn-primary rounded-2 costitem-edit" data-costitemId="${costitemList[i].id}" >Edit</button>
+                      <button class="btn btn-primary rounded-2 costitem-edit" data-costitemId="${
+                        costitemList[i].id
+                      }" >Edit</button>
                     </td>
                     <td class="p-1 text-center">
-                      <button class="btn btn-danger rounded-2 costitem-delete" data-costitemId="${costitemList[i].id}">Delete</button>
+                      <button class="btn btn-danger rounded-2 costitem-delete" data-costitemId="${
+                        costitemList[i].id
+                      }">Delete</button>
                     </td>
                   </tr>
                   `;
@@ -212,12 +235,14 @@ class GlobalInterface {
         const tableString = `
                             <table class="table w-full text-light-1 border">
                               <thead>
-                                <tr>
+                                <tr class="bg-dark-3">
                                   <th class="py-2 border-bottom border-right">Serial</th>
-                                  <th class="py-2 border-bottom border-right">Design(%)</th>
-                                  <th class="py-2 border-bottom border-right">Number of page(%)</th>
-                                  <th class="py-2 border-bottom border-right">Content(%)</th>
-                                  <th class="py-2 border-bottom border-right">Ecommerce(%)</th>
+                                  <th class="py-2 border-bottom border-right">Design (Complexity %)</th>
+                                  <th class="py-2 border-bottom border-right">Number of page</th>
+                                  <th class="py-2 border-bottom border-right">Stock Image</th>
+                                  <th class="py-2 border-bottom border-right">Copywitring</th>
+                                  <th class="py-2 border-bottom border-right">Logo Design</th>
+                                  <th class="py-2 border-bottom border-right">Ecommerce</th>
                                   <th class="py-2 border-bottom border-right">Profit(%)</th>
                                   <th class="py-2 border-bottom border-right">Scheduling / ‍‍‍Reservations</th>
                                   <th class="py-2 border-bottom border-right">Blog</th>

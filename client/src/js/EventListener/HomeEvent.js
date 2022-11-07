@@ -2,10 +2,19 @@
 /* eslint-disable no-useless-constructor */
 import GlobalEvent from './GlobalEvent';
 import { BACKEND_URL } from '../config/keys';
+import Helper from '../Utils/Holper';
+import InterfaceIntraction from '../InterfaceIntraction/InterfaceIntraction';
 
 class HomeEvent extends GlobalEvent {
   constructor() {
     super();
+    this.helper = new Helper();
+    this.loadingElement = document.querySelector('.loading-elements');
+    this.noLoadingElements = document.querySelectorAll('.no-loading');
+    this.interfaceInt = new InterfaceIntraction(
+      this.noLoadingElements,
+      this.loadingElement
+    );
   }
 
   sliderFillerWidthChange(allSliders, dataObj, updatedDataObj, costitemId) {
@@ -14,12 +23,13 @@ class HomeEvent extends GlobalEvent {
       allSliders.forEach((slider) => {
         slider.addEventListener('input', (se) => {
           // selector.style.left = `${se.target.value}%`;
-          //   console.log(se.target);
+          // console.log(se.currentTarget);
+          // console.log({[se.target.name] : se.target.value});
           //   console.log(se.target.nextElementSibling);
           if (costitemId) {
-            updatedDataObj[se.target.name] = se.target.value;
+            updatedDataObj[se.target.name] = parseInt(se.target.value, 10);
           } else {
-            dataObj[se.target.name] = se.target.value;
+            dataObj[se.target.name] = parseInt(se.target.value, 10);
           }
           se.target.nextElementSibling.style.width = `${se.target.value}%`;
         });
@@ -78,11 +88,18 @@ class HomeEvent extends GlobalEvent {
       // console.log(Object.getOwnPropertyNames(dataObj));
       // console.log(costitemId);
       // console.log({updatedDataObj, dataObj});
+      this.interfaceInt.loadingStart();
+      let userid = window.localStorage.getItem('userid');
 
       // Save or update data
       if (!costitemId) {
         if (Object.getOwnPropertyNames(this.dataObj).length > 0) {
           try {
+            if (!userid) {
+              // generate user id
+              userid = this.helper.generateUserId();
+            }
+            this.dataObj.userid = userid;
             const option = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -93,6 +110,7 @@ class HomeEvent extends GlobalEvent {
             const jsonRes = JSON.parse(text);
             // console.log(jsonRes);
             if (response.status === 200 || response.status === 201) {
+              window.localStorage.setItem('userid', userid);
               // for the first time we are going to save, afterwards, we are going to edit
               // Redirect with costitem id to edit costitem
               window.location.replace(
@@ -127,6 +145,7 @@ class HomeEvent extends GlobalEvent {
           console.log(error);
         }
       }
+      this.interfaceInt.loadingTerminate();
     });
   }
 }

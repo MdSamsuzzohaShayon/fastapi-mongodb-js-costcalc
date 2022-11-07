@@ -2,8 +2,8 @@ import InterfaceIntraction from './InterfaceIntraction';
 
 class HomeIntractions extends InterfaceIntraction {
   // eslint-disable-next-line no-useless-constructor
-  constructor() {
-    super();
+  constructor(noLoadingElements, loadingElement) {
+    super(noLoadingElements, loadingElement);
     // console.log('HomeIntractions');
   }
 
@@ -49,9 +49,34 @@ class HomeIntractions extends InterfaceIntraction {
         });
       });
     } catch (expandCntErr) {
+
       console.log('Error from - /InterfaceIntraction/HomeIntractions.js');
       console.log(expandCntErr);
     }
+  }
+
+  scrollToParticularElement(allElementsBtns){
+    this.allElementsBtns = allElementsBtns;
+
+    allElementsBtns.forEach((aeb)=>{
+      aeb.addEventListener('click', (aebe)=>{
+        aebe.preventDefault();
+        // console.log(aebe.target.dataset.optiondetailbtn);
+        const contentElement = document.querySelector(`[data-optiondetailcontent="${aebe.target.dataset.optiondetailbtn}-content"`);
+        // console.log(contentElement);
+        contentElement.scrollIntoView({ behavior: 'smooth'});
+
+      });
+    });
+  }
+
+  scrollToTargetedElement(btnElemnt, scrollElement){
+    this.btnElemnt = btnElemnt;
+    this.scrollElement = scrollElement;
+    this.btnElemnt.addEventListener("click", (bee)=>{
+      bee.preventDefault();
+      scrollElement.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 }
 

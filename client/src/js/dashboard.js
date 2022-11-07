@@ -18,11 +18,20 @@ document.addEventListener('DOMContentLoaded', (domE) => {
 
   const tableWrapper = document.querySelector('.cost-calculated-table-wrapper');
   (async () => {
+    const loadingElement = document.querySelector('.loading-elements');
+    const noLoadingElements = document.querySelectorAll('.no-loading');
     // const response = await fetchData.fetchCostitemDataByIP();
     // console.log("ranning");
-    costitemList = await fetchData.fetchCostitemDataByIP();
-    console.log(costitemList);
+    costitemList = await fetchData.fetchCostitemData();
+    // console.log(costitemList);
     dashboardInt.makeCostitemTable(tableWrapper, costitemList);
+
+    loadingElement.classList.add('d-none');
+    // Disable loading
+    noLoadingElements.forEach((noLoading) => {
+      noLoading.classList.remove('d-none');
+    });
+
     /**
      * @event
      * event listener for edit and delete
@@ -30,5 +39,4 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     const allCostitemsEdit = document.querySelectorAll('.costitem-edit');
     dashboardEvt.redirectToEditCostitem(allCostitemsEdit);
   })();
-
 });

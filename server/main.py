@@ -1,9 +1,9 @@
-from fastapi import FastAPI, HTTPException, status, Request, Header
+from fastapi import FastAPI, HTTPException, status, Request, Header, Body
 from fastapi.responses import JSONResponse
 from bson import ObjectId, json_util
 import json
-from typing import List
-import re
+from typing import List, Union
+import os
 from dotenv import load_dotenv
 from models.CostItem import CostItemCreateModel, ResponseSingleCostitem, CostItemUpdateModel
 from config.database import costitem_collection
@@ -14,10 +14,9 @@ app = FastAPI()
 
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
     "http://localhost",
     "http://localhost:8080",
+    os.environ["FRONTEND_URL"]
 ]
 
 app.add_middleware(
@@ -43,7 +42,7 @@ async def costitem_add(costitem: CostItemCreateModel, request: Request):
         x = 'x-forwarded-for'.encode('utf-8')
         costitem_dict['userip'] = request.client.host
         new_costitem = await costitem_collection.insert_one(costitem_dict)
-        print(costitem_dict)
+        # print(costitem_dict)
         # print(new_costitem.inserted_id)
         objectId = new_costitem.inserted_id
         costitem_dict['id'] = str(objectId)
@@ -89,10 +88,15 @@ async def costitem_all():
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@app.get('/api/costitem/user/{userip}', response_model=List[ResponseSingleCostitem], response_model_exclude_none=True)
-async def costitem_of_a_user(userip: str):
+@app.get('/api/costitem/user/', response_model=List[ResponseSingleCostitem], response_model_exclude_none=True)
+async def costitem_of_a_user( request: Request, userid: Union[str, None] = None,):
     try:
-        find_all_costitem = await costitem_collection.find({"userip": userip}).to_list(1000)
+        userip = request.client.host
+        find_all_costitem = []
+        if userid is not None:
+            find_all_costitem = await costitem_collection.find({"userid": userid}).to_list(1000)
+        else:
+            find_all_costitem = await costitem_collection.find({"userip": userip}).to_list(1000)
         new_find_all_costitem = []
         if len(find_all_costitem) > 0:
             i = 0
@@ -112,9 +116,14 @@ async def costitem_of_a_user(userip: str):
 async def costitem_update(costitemId: str, update_costitem: CostItemUpdateModel):
     try:
         # costitem = {k: v for k, v in update_costitem.dict().items() if v is not None}
-        update_result = await costitem_collection.update_one({"_id": ObjectId(costitemId)}, {"$set": update_costitem.dict()})
+        new_costitem_dict = {
+            key: value for key, value in update_costitem.dict().items() if value is not None
+        }
+        # print(new_costitem_dict)
+        update_result = await costitem_collection.update_one({"_id": ObjectId(costitemId)}, {"$set": new_costitem_dict})
         find_single_costitem = await costitem_collection.find_one({"_id": ObjectId(costitemId)})
         find_single_costitem['id'] = str(find_single_costitem['_id'])
+        # print(find_single_costitem)
         return json.loads(json_util.dumps(find_single_costitem))
     except Exception as e:
         print(e)

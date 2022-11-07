@@ -2,18 +2,22 @@ import HomeIntractions from './InterfaceIntraction/HomeIntractions';
 import HomeUserInterface from './UserInterface/HomeUserInterface';
 import HomeEvent from './EventListener/HomeEvent';
 import FetchData from './Utils/FetchData';
-import { BACKEND_URL } from './config/keys';
+import CostCalculation from './Utils/CostCalculation';
 
 document.addEventListener('DOMContentLoaded', (domE) => {
   domE.preventDefault();
+
+  const loadingElement = document.querySelector('.loading-element-wrapper');
+  const noLoadingElements = document.querySelectorAll('.no-loading');
 
   /**
    * @class initializations
    * */
   const homeUsrInt = new HomeUserInterface();
-  const homeInt = new HomeIntractions();
+  const homeInt = new HomeIntractions(noLoadingElements, loadingElement);
   const homeEvt = new HomeEvent();
   const fetchData = new FetchData();
+  const costCal = new CostCalculation();
   /**
    * @var - declare variables
    */
@@ -21,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (domE) => {
   let dataObj = {};
   const updatedDataObj = {}; // Set this if there is a query parameter call costitemId
 
-  const makeAllSliders = () => {
+  const makeAllSliders = (dataObjParam) => {
     /**
      * @class Make user interface
      * Making slider with label
@@ -38,6 +42,7 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       null
     );
 
+    const designDefault = costCal.sliderItemDefaultValue(dataObjParam?.design);
     const sliderWrapperDesigner = document.getElementById(
       'website-design-slider'
     );
@@ -45,21 +50,27 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     homeUsrInt.makeSliderWithLabel(
       sliderWrapperDesigner,
       labelShowcaseList,
-      0,
+      designDefault,
       20,
       'design'
     );
 
+    const noofpageDefault = costCal.sliderItemDefaultValue(
+      dataObjParam?.noofpage
+    );
     const noOfPageSlider = document.getElementById('no-of-page-slider');
     const lblNoOfPageList = ['1', '5', '10', '15', '20', '25+'];
     homeUsrInt.makeSliderWithLabel(
       noOfPageSlider,
       lblNoOfPageList,
-      0,
+      noofpageDefault,
       20,
       'noofpage'
     );
 
+    const contentDefault = costCal.sliderItemDefaultValue(
+      dataObjParam?.content
+    );
     const websiteContentSlider = document.getElementById(
       'website-content-slider'
     );
@@ -67,21 +78,27 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     homeUsrInt.makeSliderWithLabel(
       websiteContentSlider,
       lblwebsiteContentList,
-      0,
+      contentDefault,
       33.33,
       'content'
     );
 
+    const ecommerceDefault = costCal.sliderItemDefaultValue(
+      dataObjParam?.ecommerce
+    );
     const ecommerceSlider = document.getElementById('ecommerce-slider');
     const lblEcommerceList = ['no need', '1-10', '11-100', '100+'];
     homeUsrInt.makeSliderWithLabel(
       ecommerceSlider,
       lblEcommerceList,
-      0,
+      ecommerceDefault,
       33.33,
       'ecommerce'
     );
 
+    const writingcontrolDefault = costCal.sliderItemDefaultValue(
+      dataObjParam?.writingcontrol
+    );
     const webConCodeSlider = document.getElementById(
       'website-control-writing-code-slider'
     );
@@ -89,28 +106,31 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     homeUsrInt.makeSliderWithLabel(
       webConCodeSlider,
       lblwebConCodeList,
-      0,
+      writingcontrolDefault,
       33.33,
       'writingcontrol'
+    );
+
+    const flexibilitycontrolDefault = costCal.sliderItemDefaultValue(
+      dataObjParam?.flexibilitycontrol
     );
     const lblFlexibilityList = [
       'Minimal (templated)',
       '(dra‍‍‍g and drop) ‍‍‍Maximum',
     ];
-
     const webConFlexibilitySlider = document.getElementById(
       'website-control-flexibility-slider'
     );
     homeUsrInt.makeSliderWithLabel(
       webConFlexibilitySlider,
       lblFlexibilityList,
-      0,
+      flexibilitycontrolDefault,
       33.33,
       'flexibilitycontrol'
     );
   };
 
-  const makeAllRadioInputs = () => {
+  const makeAllRadioInputs = (dataObjParam) => {
     /**
      * @class Make user interface
      * Making radio toggle on/ off input
@@ -119,25 +139,29 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     homeUsrInt.makeRadioOnOffToggle(
       leadgen,
       'Forms / Lead gene‍‍‍ration',
-      'leadgen'
+      'leadgen',
+      dataObjParam.leadgen
     );
     const galary = document.getElementById('galary-wraper');
     homeUsrInt.makeRadioOnOffToggle(
       galary,
       'Image / Video ga‍‍‍lleries',
-      'galary'
+      'galary',
+      dataObjParam.galary
     );
     const schedule = document.getElementById('schedule-wraper');
     homeUsrInt.makeRadioOnOffToggle(
       schedule,
       'Event scheduling / ‍‍‍Reservations',
-      'schedule'
+      'schedule',
+      dataObjParam.schedule
     );
     const social = document.getElementById('social-wraper');
     homeUsrInt.makeRadioOnOffToggle(
       social,
       'Social Media (share / lik‍‍‍e / reviews)',
-      'social'
+      'social',
+      dataObjParam.social
     );
     const search = document.getElementById('search-wraper');
     homeUsrInt.makeRadioOnOffToggle(search, 'Onsite sea‍‍‍rch', 'search');
@@ -145,21 +169,33 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     homeUsrInt.makeRadioOnOffToggle(
       profile,
       'Member login /‍‍‍ Profiles',
-      'profile'
+      'profile',
+      dataObjParam.profile
     );
     const tracking = document.getElementById('tracking-wraper');
     homeUsrInt.makeRadioOnOffToggle(
       tracking,
       'Analy‍‍‍tics & tracking',
-      'tracking'
+      'tracking',
+      dataObjParam.tracking
     );
     const chatWrapper = document.getElementById('chat-wraper');
-    homeUsrInt.makeRadioOnOffToggle(chatWrapper, 'Liv‍‍‍e chat', 'chat');
+    homeUsrInt.makeRadioOnOffToggle(
+      chatWrapper,
+      'Liv‍‍‍e chat',
+      'chat',
+      dataObjParam.chat
+    );
     const blogWrapper = document.getElementById('blog-wraper');
-    homeUsrInt.makeRadioOnOffToggle(blogWrapper, 'Blog‍‍‍', 'blog');
+    homeUsrInt.makeRadioOnOffToggle(
+      blogWrapper,
+      'Blog‍‍‍',
+      'blog',
+      dataObjParam.blog
+    );
   };
 
-  const makeAllTwoLevelInputs = () => {
+  const makeAllTwoLevelInputs = (dataObjParam) => {
     /**
      * @class to make two level input
      */
@@ -170,7 +206,8 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       stockimageInputWrapper,
       'Stock images :',
       'at $10/image (avg.)',
-      'stockimage'
+      'stockimage',
+      dataObjParam.stockimage
     );
     const copywriteInputWrapper = document.getElementById(
       'coppywriting-input-wrapper'
@@ -179,7 +216,8 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       copywriteInputWrapper,
       'Copywr‍‍‍iting :',
       'at $1‍‍‍50‍‍‍/page (avg.)',
-      'copywrite'
+      'copywrite',
+      dataObjParam.copywrite
     );
   };
 
@@ -231,84 +269,37 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       updatedDataObj,
       costitemId
     );
-    /*
-    saveData.addEventListener('click', async (sde) => {
-      // console.log(dataObj);
-      // console.log(Object.getOwnPropertyNames(dataObj));
-      // Save or update data
-      if (!costitemId) {
-        if (Object.getOwnPropertyNames(dataObj).length > 0) {
-          try {
-            const option = {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(dataObj),
-            };
-            const response = await fetch(`${BACKEND_URL}/costitem/add`, option);
-            const text = await response.text();
-            const jsonRes = JSON.parse(text);
-            // console.log(jsonRes);
-            if (response.status === 200 || response.status === 201) {
-              // for the first time we are going to save, afterwards, we are going to edit
-              // Redirect with costitem id to edit costitem
-              window.location.replace(
-                `${window.location.href}?costitemId=${jsonRes.id}`
-              );
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        }
-      } else if (Object.getOwnPropertyNames(updatedDataObj).length > 0) {
-        try {
-          const options = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updatedDataObj),
-          };
-          const response = await fetch(
-            `${BACKEND_URL}/costitem/update/${costitemId}`,
-            options
-          );
-          const text = await response.text();
-          const jsonRes = JSON.parse(text);
-          // console.log(jsonRes);
-          if (response.status === 200 || response.status === 201) {
-            // for the first time we are going to save, afterwards, we are going to edit
-            // Redirect with costitem id to edit costitem
-            // window.location.replace(
-            //   `${window.location.href}?costitemId=${jsonRes.id}`
-            // );
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    });
-    */
+
+
+    const allOptionDetailBtnElements = document.querySelectorAll('.optiondetail-btn');
+    homeInt.scrollToParticularElement(allOptionDetailBtnElements);
+
+    const getEstimateBtn = document.getElementById('get-estimate-btn');
+    const sectionGetStarted = document.getElementById('section-get-started');
+    homeInt.scrollToTargetedElement(getEstimateBtn, sectionGetStarted);
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const sectionwebDesign = document.getElementById('section-web-design');
+    homeInt.scrollToTargetedElement(getStartedBtn, sectionwebDesign);
   };
 
   (async () => {
     // const response = await fetchData.fetchCostitemDataByIP();
-    const loadingElement = document.querySelector('.loading-elements');
-    const noLoadingElements = document.querySelectorAll('.no-loading');
     const params = new URLSearchParams(window.location.search);
     const costitemId = params.get('costitemId');
     if (costitemId) {
-      const singleCostItem =
-        await fetchData.fetchSingleCostitemDataByCostitemId(costitemId);
-      console.log({ singleCostItem });
+      const responseData = await fetchData.fetchSingleCostitemDataByCostitemId(
+        costitemId
+      );
+      if (responseData) dataObj = responseData;
+      // console.log({ singleCostItem });
+      // console.log(dataObj);
     }
 
-    makeAllSliders();
-    makeAllRadioInputs();
-    makeAllTwoLevelInputs();
+    makeAllSliders(dataObj);
+    makeAllRadioInputs(dataObj);
+    makeAllTwoLevelInputs(dataObj);
     makeAllUserIntractions(costitemId);
-    
     loadingElement.classList.add('d-none');
-    // Disable loading
-    noLoadingElements.forEach((noLoading)=> {
-      noLoading.classList.remove('d-none');
-    });
+    homeInt.loadingTerminate();
   })();
 });

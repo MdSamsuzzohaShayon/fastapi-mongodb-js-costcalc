@@ -5,14 +5,18 @@
  
 ### Instructions
  - Make user ID from frontend, save it to localstorage, search/fetch all costitem by userip or userid -. on server instead of userip we are going to take userid as path parameter
- - Make a loader
- - Make stickey menu (dashboard, save, reset, etc button)
- - Save all items in localstorage
- - ask client for backend - Which backend framework should I use (your existing backend framework)? Should I use any frontend framework or vanilla JavaScript? How will you combine this with your existing project?
- - Make backend prototype for client
- - Cost calculation - intractivity
- - style save button and make the button sticky and intractive
+ - Make a loader ✅
+ - Make stickey menu (dashboard, save, reset, etc button) ✅
+ - Save all items in localstorage ✅
+ - Make backend prototype for client ✅
+ - Cost calculation - intractivity 
+ - Show input levels in table instead of only data
+ - Change content
+ - style save button and make the button sticky and intractive 
  - Fetch data cost item by id and set default value for all inputs
+ - Make it responsive
+ - Slider input should look better (filler)
+ - ask client for backend - Which backend framework should I use (your existing backend framework)? Should I use any frontend framework or vanilla JavaScript? How will you combine this with your existing project?
 
 ### FastAPI
  - [Reference](https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/)

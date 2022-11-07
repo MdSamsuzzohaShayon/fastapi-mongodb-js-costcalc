@@ -29,6 +29,7 @@ module.exports = {
           sources: {
             list: [
               // All default supported tags and attributes
+              '...',
               {
                 tag: 'img',
                 attribute: 'data-src',
