@@ -116,6 +116,7 @@ async def costitem_of_a_user( request: Request, userid: Union[str, None] = None,
 async def costitem_update(costitemId: str, update_costitem: CostItemUpdateModel):
     try:
         # costitem = {k: v for k, v in update_costitem.dict().items() if v is not None}
+        print(update_costitem)
         new_costitem_dict = {
             key: value for key, value in update_costitem.dict().items() if value is not None
         }

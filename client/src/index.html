@@ -62,7 +62,10 @@
               class="slider-wrapper border-bottom w-full"
               id="showcase-cost-calc-slider"
             ></div>
-            <button class="btn btn-outline-info text-uppercase mt-2" id="get-estimate-btn">
+            <button
+              class="btn btn-outline-info text-uppercase mt-2"
+              id="get-estimate-btn"
+            >
               GET AN ESTIMATE
             </button>
           </div>
@@ -110,7 +113,10 @@
                     </li>
                   </ul>
                   <div class="w-full text-center">
-                    <button class="btn btn-outline-info text-uppercase" id="get-started-btn">
+                    <button
+                      class="btn btn-outline-info text-uppercase"
+                      id="get-started-btn"
+                    >
                       Get Started
                     </button>
                   </div>
@@ -133,33 +139,7 @@
               <div
                 class="slider-wrapper border-bottom w-full"
                 id="website-design-slider"
-              >
-                <!-- <h3 class="h3">Sele‍‍‍ct a style</h3> -->
-                <!-- <div class="slider-lebel d-flex w-full justify-content-between mt-2">
-                  <h5 class="slider-l-1 text-uppercase text-light-1">SIMPLE TEMPLATE</h5>
-                  <h5 class="slider-l-1 text-uppercase text-light-1">%2950</h5>
-                  <h5 class="slider-l-1 text-uppercase text-light-1">COMPLEX C‍‍‍USTOM</h5>
-                </div> -->
-                <!-- <div class="slider-control w-full mb-4 mt-2 position-relative">
-                  <input
-                    class="slider-range-input w-full"
-                    type="range"
-                    value="33.33"
-                    min="0"
-                    max="100"
-                    step="33.33"
-                  />
-                  <div class="slider-filler position-absolute"></div>
-                  <div class="slider-pointers w-full position-absolute">
-                    <ul class="d-flex justify-content-between">
-                      <li class="list-unstyled text-light-1">•</li>
-                      <li class="list-unstyled text-light-1">•</li>
-                      <li class="list-unstyled text-light-1">•</li>
-                      <li class="list-unstyled text-light-1">•</li>
-                    </ul>
-                  </div>
-                </div> -->
-              </div>
+              ></div>
             </div>
             <div class="row mb-2">
               <div class="col-6">
@@ -180,7 +160,9 @@
               class="px-3 d-flex justify-content-end w-full align-items-center"
             >
               <h3 class="h3 mx-2 my-2">Design Cost:</h3>
-              <div class="cost-box rounded-2  my-2 text-light-1">$190</div>
+              <div class="cost-box rounded-2 my-2 text-light-1">
+                $ <span id="design-cost-box" data-designcost="480">480</span>
+              </div>
             </div>
           </div>
         </div>
@@ -197,25 +179,13 @@
             <div class="row">
               <div class="col-6 border-right">
                 <div class="input-quantity">
-                  <div class="row mb-2" id="stockimage-input-wrapper">
-                    <!-- <label for="stockimages" class="double-label"
-                      >Stock images :</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="stockimages"
-                      id="stockimages"
-                    />
-                    <label for="stockimages" class="double-label"
-                      >at $10/image (avg.)</label
-                    > -->
-                  </div>
+                  <div class="row mb-2" id="stockimage-input-wrapper"></div>
                   <div class="row mb-2" id="coppywriting-input-wrapper"></div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="px-1">
+                  <h3>Logo Design</h3>
                   <div
                     class="slider-wrapper w-full"
                     id="website-content-slider"
@@ -229,7 +199,9 @@
               class="px-3 d-flex justify-content-end w-full align-items-center"
             >
               <h3 class="h3 mx-2 my-2">Content Cost:</h3>
-              <div class="cost-box rounded-2  my-2 text-light-1">$190</div>
+              <div class="cost-box rounded-2 my-2 text-light-1">
+                $ <span id="content-cost-box" data-contentcost="0">0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -237,7 +209,7 @@
       <!-- Website content end  -->
 
       <!-- ecommerce start  -->
-      <section class="section-5 mt-4" id="section-web-content">
+      <section class="section-5 mt-4" id="section-web-ecommerce">
         <div class="container bg-dark-2 rounded-2">
           <div class="p-3 content">
             <div class="row section-title-wrapper">
@@ -262,7 +234,9 @@
               class="px-3 d-flex justify-content-end w-full align-items-center"
             >
               <h3 class="h3 mx-2 my-2">E-commerce cost:</h3>
-              <div class="cost-box rounded-2  my-2 text-light-1">$190</div>
+              <div class="cost-box rounded-2 my-2 text-light-1">
+                $ <span id="ecommerce-cost-box" data-ecommercecost="0">0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -328,7 +302,9 @@
               class="px-3 d-flex justify-content-end w-full align-items-center"
             >
               <h3 class="h3 mx-2 my-2">Add-ons cost :</h3>
-              <div class="cost-box rounded-2  my-2 text-light-1">$190</div>
+              <div class="cost-box rounded-2 my-2 text-light-1">
+                $ <span id="addons-cost-box" data-addonscost="0">0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -392,7 +368,10 @@
                   <div class="col-2 text-light-2">$1120</div>
                   <div class="col-2 text-light-2">$5 - $100+</div>
                   <div class="col-3">
-                    <button class="btn btn-outline-info text-uppercase optiondetail-btn" data-optiondetailbtn="agency-wordpress">
+                    <button
+                      class="btn btn-outline-info text-uppercase optiondetail-btn"
+                      data-optiondetailbtn="agency-wordpress"
+                    >
                       View details
                     </button>
                   </div>
@@ -405,20 +384,29 @@
                   <div class="col-2 text-light-2">$1120</div>
                   <div class="col-2 text-light-2">$5 - $100+</div>
                   <div class="col-3">
-                    <button class="btn btn-outline-info text-uppercase optiondetail-btn" data-optiondetailbtn="agency-builder">
+                    <button
+                      class="btn btn-outline-info text-uppercase optiondetail-btn"
+                      data-optiondetailbtn="agency-builder"
+                    >
                       View details
                     </button>
                   </div>
                 </li>
                 <li class="list-group-item">
                   <div class="col-5">
-                    <p class="text-muted">Option 3: <span class="text-danger-1">Not Recommended</span></p>
+                    <p class="text-muted">
+                      Option 3:
+                      <span class="text-danger-1">Not Recommended</span>
+                    </p>
                     <h4>Do it yourself with Wo‍‍‍rdPress</h4>
                   </div>
                   <div class="col-2 text-light-2">$1120</div>
                   <div class="col-2 text-light-2">$5 - $100+</div>
                   <div class="col-3">
-                    <button class="btn btn-outline-info text-uppercase optiondetail-btn" data-optiondetailbtn="yourself-wordpress">
+                    <button
+                      class="btn btn-outline-info text-uppercase optiondetail-btn"
+                      data-optiondetailbtn="yourself-wordpress"
+                    >
                       View details
                     </button>
                   </div>
@@ -431,7 +419,10 @@
                   <div class="col-2 text-light-2">$1120</div>
                   <div class="col-2 text-light-2">$5 - $100+</div>
                   <div class="col-3">
-                    <button class="btn btn-outline-info text-uppercase optiondetail-btn" data-optiondetailbtn="yourself-builder">
+                    <button
+                      class="btn btn-outline-info text-uppercase optiondetail-btn"
+                      data-optiondetailbtn="yourself-builder"
+                    >
                       View details
                     </button>
                   </div>
@@ -446,7 +437,10 @@
       <!-- all options detail start  -->
       <section class="section-9" id="section-web-cost-estimate-option">
         <!-- Option-1: agency using wordpress start  -->
-        <div class="option-1 option mt-4" data-optiondetailcontent="agency-wordpress-content">
+        <div
+          class="option-1 option mt-4"
+          data-optiondetailcontent="agency-wordpress-content"
+        >
           <div class="container bg-dark-2 rounded-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
@@ -578,7 +572,10 @@
         <!-- Option-1: agency using wordpress end  -->
 
         <!-- Option-2: agency using website builder start  -->
-        <div class="option-2 option mt-4" data-optiondetailcontent="agency-builder-content">
+        <div
+          class="option-2 option mt-4"
+          data-optiondetailcontent="agency-builder-content"
+        >
           <div class="container bg-dark-2 rounded-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
@@ -710,7 +707,10 @@
         <!-- Option-2: agency using website builder end  -->
 
         <!-- Option-3: DIY using WordPress start  -->
-        <div class="option-3 option mt-4" data-optiondetailcontent="yourself-wordpress-content">
+        <div
+          class="option-3 option mt-4"
+          data-optiondetailcontent="yourself-wordpress-content"
+        >
           <div class="container bg-dark-2 rounded-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
@@ -843,7 +843,10 @@
         <!-- Option-3: DIY using WordPress end  -->
 
         <!-- Option-4: DIY u‍‍‍sing Website Builder start  -->
-        <div class="option-4 option mt-4" data-optiondetailcontent="yourself-builder-content">
+        <div
+          class="option-4 option mt-4"
+          data-optiondetailcontent="yourself-builder-content"
+        >
           <div class="container bg-dark-2 rounded-2">
             <div class="p-3 content">
               <div class="row mb-2 section-title-wrapper">
@@ -983,7 +986,7 @@
       <!-- Ads placement start -->
       <section class="section-10 mt-3" id="section-web-cost-estimate-option">
         <div class="container">
-          <img src="./img/ads.png" alt="Ads" class="w-full rounded-2">
+          <img src="./img/ads.png" alt="Ads" class="w-full rounded-2" />
         </div>
       </section>
       <!-- Ads placement end -->
@@ -1007,9 +1010,8 @@
     </div>
     <!-- Loading element end  -->
 
-
     <!-- Footer section start  -->
-    <footer class="footer border-top no-loading d-none">
+    <footer class="footer border-top no-loading d-none mt-4">
       <div class="container">
         <p class="text-muted">© Copyrights 2022</p>
         <p class="text-muted">WEBSITE COST CALCULATOR APP</p>

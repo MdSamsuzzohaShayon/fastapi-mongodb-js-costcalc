@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (domE) => {
 
   const tableWrapper = document.querySelector('.cost-calculated-table-wrapper');
   (async () => {
-    const loadingElement = document.querySelector('.loading-elements');
+    const loadingElement = document.querySelector('.loading-element-wrapper');
     const noLoadingElements = document.querySelectorAll('.no-loading');
     // const response = await fetchData.fetchCostitemDataByIP();
     // console.log("ranning");

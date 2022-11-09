@@ -7,6 +7,8 @@ class CostItemModelBase(BaseModel):
     noofpage: Union[int, None] = None
     content: Union[int, None] = None
     ecommerce: Union[int, None] = None
+    stockimage: Union[int, None] = None
+    copywrite: Union[int, None] = None
     profile: Union[bool, None] = False
     schedule: Union[bool, None] = False
     blog: Union[bool, None] = False
@@ -29,6 +31,8 @@ class CostItemUpdateModel(BaseModel):
     noofpage: Union[int, None] = None
     content: Union[int, None] = None
     ecommerce: Union[int, None] = None
+    stockimage: Union[int, None] = None
+    copywrite: Union[int, None] = None
     profile: Union[bool, None] = None
     schedule: Union[bool, None] = None
     blog: Union[bool, None] = None

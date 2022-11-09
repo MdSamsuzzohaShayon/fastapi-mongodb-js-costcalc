@@ -1,8 +1,19 @@
+/* eslint-disable prefer-const */
+/* eslint-disable one-var */
+/**
+ * COMMENT EXAMPLE
+ * ==========================================================
+ */
 import HomeIntractions from './InterfaceIntraction/HomeIntractions';
 import HomeUserInterface from './UserInterface/HomeUserInterface';
 import HomeEvent from './EventListener/HomeEvent';
 import FetchData from './Utils/FetchData';
 import CostCalculation from './Utils/CostCalculation';
+
+const designAndNoOfPageCostbox = document.getElementById('design-cost-box');
+const ecommerceCostbox = document.getElementById('ecommerce-cost-box');
+const addonsCostbox = document.getElementById('addons-cost-box');
+const contentCostbox = document.getElementById('content-cost-box');
 
 document.addEventListener('DOMContentLoaded', (domE) => {
   domE.preventDefault();
@@ -17,18 +28,29 @@ document.addEventListener('DOMContentLoaded', (domE) => {
   const homeInt = new HomeIntractions(noLoadingElements, loadingElement);
   const homeEvt = new HomeEvent();
   const fetchData = new FetchData();
-  const costCal = new CostCalculation();
+  const costCalc = new CostCalculation();
   /**
    * @var - declare variables
    */
-  // eslint-disable-next-line prefer-const
   let dataObj = {};
   const updatedDataObj = {}; // Set this if there is a query parameter call costitemId
+  let defaultCostWebContent = 0;
+  const designFCost = 480,
+    nopFCost = 200;
+  const ecommerceFCost = 750;
+  const logoContentFCost = 275,
+    stockimageFCost = 10,
+    copywriteFCost = 150;
 
   const makeAllSliders = (dataObjParam) => {
     /**
      * @class Make user interface
      * Making slider with label
+     */
+
+    /**
+     * SHOWCASE SLIDER
+     * ==========================================================
      */
     const showcaseCostCalcSlider = document.getElementById(
       'showcase-cost-calc-slider'
@@ -42,7 +64,11 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       null
     );
 
-    const designDefault = costCal.sliderItemDefaultValue(dataObjParam?.design);
+    /**
+     * DESIGN AND NO OF PAGE SLIDER
+     * ==========================================================
+     */
+    const designDefault = costCalc.sliderItemDefaultValue(dataObjParam?.design);
     const sliderWrapperDesigner = document.getElementById(
       'website-design-slider'
     );
@@ -55,7 +81,7 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       'design'
     );
 
-    const noofpageDefault = costCal.sliderItemDefaultValue(
+    const noofpageDefault = costCalc.sliderItemDefaultValue(
       dataObjParam?.noofpage
     );
     const noOfPageSlider = document.getElementById('no-of-page-slider');
@@ -67,8 +93,23 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       20,
       'noofpage'
     );
+    const defaultCostNoOfPageNum = costCalc.getCostOfNOP(noofpageDefault);
+    const defaultDesignCost = costCalc.getCostOfDesign(designDefault);
+    // console.log({ noofpageDefault, defaultCostNoOfPageNum });
+    designAndNoOfPageCostbox.setAttribute(
+      'data-designcost',
+      defaultCostNoOfPageNum + defaultDesignCost
+    );
+    designAndNoOfPageCostbox.textContent =
+      defaultCostNoOfPageNum + defaultDesignCost;
 
-    const contentDefault = costCal.sliderItemDefaultValue(
+    // console.log(defaultDesignCost);
+
+    /**
+     * WEBSITE CONTENT SLIDER
+     * ==========================================================
+     */
+    const contentDefault = costCalc.sliderItemDefaultValue(
       dataObjParam?.content
     );
     const websiteContentSlider = document.getElementById(
@@ -82,8 +123,16 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       33.33,
       'content'
     );
+    // Getting default cost of website content and setting the default value after two function
+    const cc = costCalc.getCostOfContent(dataObjParam?.content);
+    // console.log({ cc, ccc: cc * logoContentFCost, contentDefault });
+    defaultCostWebContent += cc * logoContentFCost;
 
-    const ecommerceDefault = costCal.sliderItemDefaultValue(
+    /**
+     * ECOMMERCE SLIDER
+     * ==========================================================
+     */
+    const ecommerceDefault = costCalc.sliderItemDefaultValue(
       dataObjParam?.ecommerce
     );
     const ecommerceSlider = document.getElementById('ecommerce-slider');
@@ -95,8 +144,24 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       33.33,
       'ecommerce'
     );
+    // Set ecommerce default cost
+    const ecommerceDefaultCost = costCalc.getCostOfEcommerce(
+      dataObjParam?.ecommerce
+    );
+    ecommerceCostbox.setAttribute(
+      'data-ecommercecost',
+      Math.ceil(ecommerceDefaultCost * ecommerceFCost)
+    );
+    ecommerceCostbox.textContent = Math.ceil(
+      ecommerceDefaultCost * ecommerceFCost
+    );
 
-    const writingcontrolDefault = costCal.sliderItemDefaultValue(
+    /**
+     * WEBSITE CONTROL SLIDER
+     * WRITING CONTROL AND FLEXIBILITY CONTROL
+     * ==========================================================
+     */
+    const writingcontrolDefault = costCalc.sliderItemDefaultValue(
       dataObjParam?.writingcontrol
     );
     const webConCodeSlider = document.getElementById(
@@ -111,7 +176,7 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       'writingcontrol'
     );
 
-    const flexibilitycontrolDefault = costCal.sliderItemDefaultValue(
+    const flexibilitycontrolDefault = costCalc.sliderItemDefaultValue(
       dataObjParam?.flexibilitycontrol
     );
     const lblFlexibilityList = [
@@ -134,6 +199,10 @@ document.addEventListener('DOMContentLoaded', (domE) => {
     /**
      * @class Make user interface
      * Making radio toggle on/ off input
+     */
+    /**
+     * WEBSITE ADDONS
+     * ==========================================================
      */
     const leadgen = document.getElementById('leadgen-wraper');
     homeUsrInt.makeRadioOnOffToggle(
@@ -164,7 +233,12 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       dataObjParam.social
     );
     const search = document.getElementById('search-wraper');
-    homeUsrInt.makeRadioOnOffToggle(search, 'Onsite sea‍‍‍rch', 'search');
+    homeUsrInt.makeRadioOnOffToggle(
+      search,
+      'Onsite sea‍‍‍rch',
+      'search',
+      dataObjParam.search
+    );
     const profile = document.getElementById('profile-wraper');
     homeUsrInt.makeRadioOnOffToggle(
       profile,
@@ -193,6 +267,11 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       'blog',
       dataObjParam.blog
     );
+    // set default cost for addons
+    const defaultCostOfAllAddons = costCalc.getCostOfAllAddons(dataObj);
+    // console.log({defaultCostOfAllAddons, addonsCostbox});
+    addonsCostbox.setAttribute('data-addonscost', defaultCostOfAllAddons);
+    addonsCostbox.textContent = defaultCostOfAllAddons;
   };
 
   const makeAllTwoLevelInputs = (dataObjParam) => {
@@ -209,6 +288,10 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       'stockimage',
       dataObjParam.stockimage
     );
+    // console.log({stockimage: dataObjParam.stockimage});
+    if (dataObjParam.stockimage) {
+      defaultCostWebContent += dataObjParam.stockimage * stockimageFCost;
+    }
     const copywriteInputWrapper = document.getElementById(
       'coppywriting-input-wrapper'
     );
@@ -219,6 +302,11 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       'copywrite',
       dataObjParam.copywrite
     );
+    if (dataObjParam.copywrite) {
+      defaultCostWebContent += dataObjParam.copywrite * copywriteFCost;
+    }
+    contentCostbox.setAttribute('data-contentcost', defaultCostWebContent);
+    contentCostbox.textContent = defaultCostWebContent;
   };
 
   const makeAllUserIntractions = (costitemId) => {
@@ -236,14 +324,74 @@ document.addEventListener('DOMContentLoaded', (domE) => {
      * @element slider input range
      * all input change handler
      */
+    /**
+     * ALL SLIDER FOR CHANGING WIDTH FOR FILLER
+     * ==========================================================
+     */
     const allSliders = document.querySelectorAll('.slider-range-input');
-    homeEvt.sliderFillerWidthChange(
-      allSliders,
+    homeEvt.sliderFillerWidthChange(allSliders);
+
+    /**
+     * SECTION DESIGN INPUT CHANGE HANDLER
+     * DESIGN AND NUMBER OF PAGES
+     * ==========================================================
+     */
+    const websiteDesignSlider = document
+      .getElementById('website-design-slider')
+      .querySelector('input[type="range"]');
+    const noOfPageSlider = document
+      .getElementById('no-of-page-slider')
+      .querySelector('input[type="range"]');
+    homeEvt.noOfPageAndDesignChnageHandler(
+      websiteDesignSlider,
+      noOfPageSlider,
+      designFCost,
       dataObj,
       updatedDataObj,
-      costitemId
+      designAndNoOfPageCostbox
     );
-    // console.log(allToggleOnOffInput);
+
+    /**
+     * SECTION CONTENT
+     * STOCKIMAGE, CONTENT WRITING, AND LOGO DESIGN
+     * ==========================================================
+     */
+    const stockimageInputElement = document.querySelector(
+      'input[name="stockimage"]'
+    );
+    const copywriteInputElement = document.querySelector(
+      'input[name="copywrite"]'
+    );
+    const contentInputElement = document.querySelector('input[name="content"]');
+    homeEvt.contentCostChnageHandler(
+      stockimageInputElement,
+      copywriteInputElement,
+      contentInputElement,
+      dataObj,
+      updatedDataObj,
+      logoContentFCost,
+      stockimageFCost,
+      copywriteFCost
+    );
+
+    /**
+     * SECTION ECOMMERCE
+     * ==========================================================
+     */
+    const ecommerceInputElement = document.querySelector(
+      'input[name="ecommerce"]'
+    );
+    homeEvt.ecommerceCostChangeHandler(
+      ecommerceInputElement,
+      dataObj,
+      updatedDataObj,
+      ecommerceFCost
+    );
+
+    /**
+     * SECTION ADDONS
+     * ==========================================================
+     */
     const allToggleOnOffInput = document.querySelectorAll(
       '.on-off-toggle-input'
     );
@@ -254,6 +402,11 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       costitemId
     );
 
+    /**
+     * SECTION CONTENT
+     * STOCKIMAGE, CONTENT WRITING, AND LOGO DESIGN
+     * ==========================================================
+     */
     const allTwoLevelInputs = document.querySelectorAll('.two-level-inputs');
     homeEvt.changeTwoLevelInput(
       allTwoLevelInputs,
@@ -262,6 +415,29 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       costitemId
     );
 
+    /**
+     * SECTION WEBSITE CONTROL
+     * WRITING CODE AND FLEXIBILITY
+     * ==========================================================
+     */
+    const writingControlSlider = document
+      .getElementById('website-control-writing-code-slider')
+      .querySelector('input[type="range"]');
+    const flexibilityControlSlider = document
+      .getElementById('website-control-flexibility-slider')
+      .querySelector('input[type="range"]');
+
+    homeEvt.websiteControlChnageHandler(
+      writingControlSlider,
+      flexibilityControlSlider,
+      dataObj,
+      updatedDataObj
+    );
+
+    /**
+     * SAVE DATA ON BUTTON CLICK
+     * ==========================================================
+     */
     const saveDataElement = document.querySelector('#save-data');
     homeEvt.saveCostitemDataHandler(
       saveDataElement,
@@ -270,8 +446,12 @@ document.addEventListener('DOMContentLoaded', (domE) => {
       costitemId
     );
 
-
-    const allOptionDetailBtnElements = document.querySelectorAll('.optiondetail-btn');
+    /**
+     * SCROLL EVENTS TO SCROLL INTO A PARTICULAR ELEMENT
+     * ==========================================================
+     */
+    const allOptionDetailBtnElements =
+      document.querySelectorAll('.optiondetail-btn');
     homeInt.scrollToParticularElement(allOptionDetailBtnElements);
 
     const getEstimateBtn = document.getElementById('get-estimate-btn');

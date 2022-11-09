@@ -131,7 +131,7 @@ class GlobalInterface {
                           <div>
                             <label for="${inputName}" class="double-label" >${txtLbl1}</label>
                             <input
-                              type="text"
+                              type="number"
                               class="form-control two-level-inputs text-center"
                               name="${inputName}"
                               id="${inputName}"
